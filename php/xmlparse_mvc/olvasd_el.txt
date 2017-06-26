@@ -1,0 +1,46 @@
+Üdv!
+
+A mini webes program (alkalmazás) localhoston így indul:
+http://localhost/xmlparse_mvc/public/
+
+Az app/Config.php-ban a következő sorokkal lehet az alkalmazás helyes működéséhez szükséges útvonalakat beállítani:
+define('DIR', 'http://localhost/xmlparse_mvc/');// ha nem localon fut:  define('DIR', '/');
+define('SITEURL', 'http://localhost/xmlparse_mvc/public/');
+
+Ugyanitt ebben a fájlban lehet beállítani az adatbázist is.
+
+
+////////////////////////////////////////////////////////////////
+
+
+-- Adatbázisban futtatni:
+
+CREATE TABLE products(
+product_id int(6) NOT NULL auto_increment,
+name varchar(250) NOT NULL DEFAULT'',
+created_at timestamp COMMENT 'kesobb lehet nezni ezt is',
+updated_at timestamp,
+PRIMARY KEY (product_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE products_relproducts_xref(
+product_id int(6) NOT NULL DEFAULT'0',
+relid int(6) NOT NULL DEFAULT'0'
+);
+
+
+////////////////////////////////////////////////////////////////
+
+Ez nem lett lefejlesztve de akár lehetett volna...
+
+Az xml-t lehetne bővíteni még ezekkel:
+
+<Product>
+	<Id>123</Id>
+    <Name>Supersecret component</Name>
+	<description>Valami leírás</description>
+	<price>650</price>
+    <RelId>321</RelId>
+    <RelId>412</RelId>
+</Product>
